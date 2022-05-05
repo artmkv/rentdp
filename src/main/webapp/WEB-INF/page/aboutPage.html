@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Artem">
+    <title>About Page</title>
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/offcanvas.css}">
+</head>
+<body class="bg-light">
+<div th:replace="startNavbar.html :: nav"></div>
+
+<main class="container bg-warning">
+    <div class="d-flex align-items-center p-3 my-3 text-black bg-secondary">
+        <h1 class="h1 text-center align-items-center">ABOUT_PAGE_text</h1>
+    </div>
+</main>
+
+<div th:replace="startFooter.html :: footer"></div>
+
+<script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/resources/js/offcanvas.js}"></script>
+</body>
+</html>

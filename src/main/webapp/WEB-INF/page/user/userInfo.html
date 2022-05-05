@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>User Info Page</title>
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/offcanvas.css}">
+</head>
+<body class="bg-light">
+<div th:replace="page/user/userNavbar.html ::  nav"></div>
+<main class="container">
+
+<table class="table table-bordered table-striped">
+
+    <caption th:text="#{caption.userInf}">Caption</caption>
+    <thead class="table-dark">
+
+    <tr>
+        <th scope="row" th:text="#{th.username}">Username</th>
+        <th scope="row" th:text="#{label.balance}">Balance</th>
+        <th scope="row" th:text="#{label.name}">Name</th>
+        <th scope="row" th:text="#{label.surname}">Surname</th>
+        <th scope="row" th:text="#{label.phone}">Phone</th>
+        <th scope="row" th:text="#{label.email}">Email</th>
+    </tr>
+
+    </thead>
+    <tbody>
+        <tr>
+            <td th:text="${account.username}">Username</td>
+            <td th:text="${account.balance}">Balance</td>
+            <td th:text="${account.userData.name}">Name</td>
+            <td th:text="${account.userData.surname}">Surname</td>
+            <td th:text="${account.userData.phoneNumber}">Phone</td>
+            <td th:text="${account.userData.emailAddress}">Email</td>
+        </tr>
+    </tbody>
+</table>
+    <div>
+        <a th:href="@{/user/editUser}">
+            <input class="btn-secondary" type="submit" th:value="#{th.edit}">
+        </a>
+    </div>
+</main>
+<div th:replace="page/user/userFooter.html ::  footer"></div>
+<script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/resources/js/offcanvas.js}"></script>
+</body>
+</html>

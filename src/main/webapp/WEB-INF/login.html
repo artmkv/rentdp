@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/offcanvas.css}">
+</head>
+<body class="bg-light">
+<div th:replace="startNavbar.html :: nav"></div>
+<main class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-5 mt-5 p-3">
+            <form th:method="post" th:action="@{/login}"
+                  enctype="application/x-www-form-urlencoded">
+
+                <div th:if="${param.error}" class="alert alert-dark" role="alert">
+                    <span th:text="#{alert.invalid}">Invalid username and password.</span>
+                </div>
+                <div th:if="${param.logout}" class="alert alert-success" role="alert">
+                    <span th:text="#{alert.logout}">You have been logged out.</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputUsername" class="form-label" th:text="#{th.username}">Username</label>
+                    <input name="username" type="text" class="form-control" id="inputUsername"
+                           th:placeholder="#{placeholder.username}" required
+                           pattern="^[A-za-z][A-Za-z0-9\._]{3,10}$">
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputPassword" class="form-label" th:text="#{label.pass}">${pass}</label>
+                    <input name="password" type="password" class="form-control" pattern="^[A-za-z0-9\._]{4,16}$"
+                           id="inputPassword" th:placeholder="#{placeholder.pass}" required>
+                </div>
+
+                <button type="submit" class="btn btn-dark" th:text="#{button.submit}">Submit</button>
+                <p></p>
+                <div class="alert alert-dark" role="alert">
+                    <span th:text="#{alert.loginIf}"></span> <a class="alert-link" th:href="@{/registerPage}"
+                                                                th:text="#{alert.loginReg}"></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<div th:replace="startFooter.html :: footer"></div>
+<script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/resources/js/offcanvas.js}"></script>
+<script th:src="@{/resources/js/bootstrap.js}"></script>
+</body>
+</html>

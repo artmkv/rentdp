@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-success" aria-label="Main navigation">
+    <div class="container-fluid">
+        <a th:href="@{/}" class="d-flex align-items-center col-md-2 mb-2 mb-md-0 text-dark text-decoration-none">
+            <img th:src="@{/resources/images/icon2.png}" width="100" height="50"
+                 role="img" aria-label="Bootstrap" alt="BIKE"></a>
+
+        <div class="navbar-collapse offcanvas-collapse flex-fill" id="navbars1">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a th:href="@{/}" class="nav-link active px-2 text-white" th:text="#{button.home}">Home</a></li>
+                <li class="nav-item"><a th:href="@{/price}" class="nav-link px-2 text-white" th:text="#{button.price}">Price</a></li>
+                <li class="nav-item"><a th:href="@{/about}" class="nav-link px-2 text-white" th:text="#{button.about}">About</a></li>
+            </ul>
+        </div>
+        <div class="text-end">
+            <ul class="nav col-md-2 col-lg-auto me-lg-auto mb-2 justify-content-end mb-md-0">
+                <li><a th:href="@{/login}" class="nav-link bg-white px-4 link-dark" th:text="#{th.login}">Login</a></li>
+                <li><a th:href="@{/registerPage}" class="nav-link bg-dark text-white px-md-4 link-dark" th:text="#{th.signup}">Sign-Up</a></li>
+            </ul>
+        </div>
+        <div class="text-end">
+            <ul class="nav col-md-2 col-lg-auto me-lg-auto mb-2 justify-content-end mb-md-0">
+                <li class="justify-content-end p-1">
+                    <div th:replace="~{fragments/locale::locale}"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
