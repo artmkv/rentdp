@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Order Blanc Page</title>
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/offcanvas.css}">
+</head>
+<body class="bg-light">
+<div th:replace="page/user/userNavbar.html ::  nav"></div>
+<main class="container">
+    <table class="table table-striped table-bordered">
+        <caption>Order table</caption>
+        <thead class="table-secondary">
+        <tr>
+            <th scope="col" th:text="ID">ID</th>
+            <th scope="col" th:text="#{th.number}">Number</th>
+            <th scope="col" th:text="#{th.model}">Model</th>
+            <th scope="col" th:text="#{th.station}">Station</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${bicycle.id}"></td>
+            <td th:text="${bicycle.number}"></td>
+            <td th:text="${bicycle.model}"></td>
+            <td th:text="${bicycle.station.number}">
+        </tr>
+        </tbody>
+    </table>
+        <form th:method="post" th:action="@{/user/addOrder}">
+        <input type="hidden"  name="id" th:value="${bicycle.id}"></label>
+            <div class="mb-3">
+                <label for="inputPeriod" class="form-label" th:text="#{label.period}">Rental period</label>
+                <input name="rentalPeriod" min="1" type="number" class="form-control"
+                       pattern="^[0-9]{0,2}$" id="inputPeriod">
+            </div>
+        <p></p>
+        <button type="submit" class="btn btn-dark" th:text="#{button.addOrd}">Add</button>
+    </form>
+</main>
+<div th:replace="page/user/userFooter.html ::  footer"></div>
+<script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/resources/js/offcanvas.js}"></script>
+</body>
+</html>

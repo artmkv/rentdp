@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>User All Bicycles Page</title>
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/resources/css/offcanvas.css}">
+</head>
+<body class="bg-light">
+<div th:replace="page/user/userNavbar.html ::  nav"></div>
+<main class="container">
+    <table class="table table-striped table-bordered">
+        <caption>Stations table</caption>
+
+        <thead class="table-secondary">
+        <tr>
+            <th scope="col" th:text="ID">ID</th>
+            <th scope="col" th:text="#{th.number}">Number</th>
+            <th scope="col" th:text="#{th.model}">Model</th>
+            <th scope="col" th:text="#{th.station}">Station</th>
+            <th scope="col" th:text="#{th.status}">Status</th>
+            <th scope="col" th:text="#{th.order}">Order</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="bicycle:${allBicycles}">
+            <td th:text="${bicycle.id}"></td>
+            <td th:text="${bicycle.number}"></td>
+            <td th:text="${bicycle.model}"></td>
+            <td th:text="${bicycle.station.number}"></td>
+            <td th:text="${bicycle.status}"></td>
+            <td>
+                <div>
+                    <a th:href="@{/user/orderBicycle/{id}(id=${bicycle.id})}">
+<!--                    <a th:href="@{/user/newOrder/{id}(id=${bicycle.id})}">-->
+                        <input class="btn-warning" type="submit" th:value="#{th.order}">
+                    </a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" th:each="page,iterStat:${countPages}">
+                <a class="page-link" th:href="@{'?offset='+${page}}" th:text="${iterStat.count}"></a>
+            </li>
+        </ul>
+    </nav>
+</main>
+<div th:replace="page/user/userFooter.html ::  footer"></div>
+<script th:src="@{/resources/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/resources/js/offcanvas.js}"></script>
+</body>
+</html>

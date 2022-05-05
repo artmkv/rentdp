@@ -1,0 +1,29 @@
+<header class="d-flex flex-wrap bg-success align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <div class="container" th:fragment="header">
+        <div class="d-flex flex-wrap align-items-start justify-content-center justify-content-lg-start">
+            <a th:href="@{/}" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <img th:src="@{/resources/images/icon2.png}" width="160" height="80"
+                     role="img" aria-label="Bootstrap" alt="BIKE"></a>
+
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a th:href="@{/user/userPage}"
+                       class="nav-link px-2 text-white" th:text="#{button.home}">Home button</a></li>
+                <li><a th:href="@{/user/showUserOrder}"
+                       class="nav-link px-2 text-white" th:text="#{button.myOrder}">My orders</a></li>
+                <li><a th:href="@{/user/editUserPage}"
+                       class="nav-link px-2 text-white" th:text="#{button.editUserInfo}">Edit user</a></li>
+                <li><a th:href="@{/user/showUserInfo}"
+                       class="nav-link px-2 text-white" th:text="#{button.aboutUser}">About user</a></li>
+                <li>
+                    <div th:replace="~{fragments/locale::locale}"></div>
+                </li>
+            </ul>
+            <form th:action="@{/logout}" th:method="post">
+                <div class="text-end">
+                    <button type="submit" class="btn btn-outline-light me-2">Log out</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</header>
